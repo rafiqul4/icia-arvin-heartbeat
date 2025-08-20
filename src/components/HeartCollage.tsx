@@ -7,7 +7,7 @@ interface HeartCollageProps {
 
 const HeartCollage: React.FC<HeartCollageProps> = ({ coupleImage, cakeImage }) => {
   return (
-    <div className="relative flex justify-center items-center py-12">
+    <div className="relative flex justify-center items-center py-4">
       {/* Floating petals animation */}
       <div className="floating-petals">
         <div className="petal"></div>
@@ -20,25 +20,22 @@ const HeartCollage: React.FC<HeartCollageProps> = ({ coupleImage, cakeImage }) =
       {/* Heart-shaped collage container */}
       <div className="heart-glow relative">
         <div className="heart-shape relative">
-          {/* Heart SVG as mask */}
-          <svg 
-            width="400" 
-            height="360" 
-            viewBox="0 0 400 360" 
-            className="absolute inset-0"
-            style={{ filter: 'drop-shadow(0 8px 32px rgba(194, 65, 108, 0.3))' }}
-          >
+          {/* Perfect Heart SVG for clipping */}
+          <svg width="0" height="0" className="absolute">
             <defs>
-              <clipPath id="heartMask">
-                <path d="M200,320 C200,320 50,200 50,120 C50,80 80,50 120,50 C140,50 160,60 200,90 C240,60 260,50 280,50 C320,50 350,80 350,120 C350,200 200,320 200,320 Z" />
+              <clipPath id="perfectHeart" clipPathUnits="objectBoundingBox">
+                <path d="M0.5,0.9 C0.5,0.9 0.1,0.6 0.1,0.35 C0.1,0.15 0.2,0.1 0.35,0.1 C0.4,0.1 0.45,0.15 0.5,0.25 C0.55,0.15 0.6,0.1 0.65,0.1 C0.8,0.1 0.9,0.15 0.9,0.35 C0.9,0.6 0.5,0.9 0.5,0.9 Z" />
               </clipPath>
             </defs>
           </svg>
           
-          {/* Heart container with images */}
+          {/* Heart container with perfect heart shape */}
           <div 
-            className="relative w-[400px] h-[360px] overflow-hidden"
-            style={{ clipPath: 'polygon(50% 15%, 85% 30%, 100% 55%, 85% 80%, 50% 100%, 15% 80%, 0% 55%, 15% 30%)' }}
+            className="relative w-[400px] h-[360px] overflow-hidden shadow-romantic"
+            style={{ 
+              clipPath: 'url(#perfectHeart)',
+              filter: 'drop-shadow(0 8px 32px rgba(194, 65, 108, 0.3))'
+            }}
           >
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-romantic opacity-20"></div>
@@ -48,13 +45,12 @@ const HeartCollage: React.FC<HeartCollageProps> = ({ coupleImage, cakeImage }) =
               <img 
                 src={coupleImage}
                 alt="Incia & Arvin - Glamorous couple portrait"
-                className="w-full h-full object-cover object-center transform scale-110 hover:scale-115 transition-transform duration-700"
+                className="w-full h-full object-cover object-center transform scale-105 hover:scale-110 transition-transform duration-700"
                 style={{ 
-                  clipPath: 'ellipse(80% 90% at 20% 50%)',
                   filter: 'sepia(10%) saturate(110%) brightness(105%)'
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-wedding-rose/20"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-wedding-rose/10"></div>
             </div>
             
             {/* Right side - Cake photo */}
@@ -62,13 +58,12 @@ const HeartCollage: React.FC<HeartCollageProps> = ({ coupleImage, cakeImage }) =
               <img 
                 src={cakeImage}
                 alt="Wedding cake with beautiful floral decorations"
-                className="w-full h-full object-cover object-center transform scale-110 hover:scale-115 transition-transform duration-700"
+                className="w-full h-full object-cover object-center transform scale-105 hover:scale-110 transition-transform duration-700"
                 style={{ 
-                  clipPath: 'ellipse(80% 90% at 80% 50%)',
                   filter: 'sepia(5%) saturate(105%) brightness(110%)'
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-wedding-gold/20"></div>
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-wedding-gold/10"></div>
             </div>
             
             {/* Center divider with romantic accent */}
