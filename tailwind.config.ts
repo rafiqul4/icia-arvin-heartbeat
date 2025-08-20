@@ -61,6 +61,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Wedding theme colors
+				wedding: {
+					gold: 'hsl(var(--wedding-gold))',
+					rose: 'hsl(var(--wedding-rose))',
+					cream: 'hsl(var(--wedding-cream))',
+					sage: 'hsl(var(--wedding-sage))'
+				},
+				romantic: {
+					DEFAULT: 'hsl(var(--romantic))',
+					foreground: 'hsl(var(--romantic-foreground))'
 				}
 			},
 			borderRadius: {
